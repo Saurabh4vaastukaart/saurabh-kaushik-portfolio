@@ -3446,7 +3446,7 @@ h3 {
 
 .about-hero__portrait > img {
   width: 100%;
-  aspect-ratio: 1 / 1.16;
+  height: min(500px, 112vw);
   object-fit: cover;
   object-position: center 30%;
   border-radius: 17px;
