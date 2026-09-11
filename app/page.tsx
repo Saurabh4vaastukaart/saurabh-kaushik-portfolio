@@ -6,6 +6,7 @@ import {
   Download,
   LinkedIn,
   Location,
+  Phone,
   Spark,
 } from "@/components/icons";
 import { ProfileCard } from "@/components/profile-card";
@@ -59,7 +60,7 @@ export default function Home() {
             products and growth across AI/LLM, healthcare, EdTech and B2B SaaS.
           </p>
           <div className="hero__actions">
-            <Link className="button button--primary" href="#work">
+            <Link className="button button--primary" href="/work">
               Explore my work <ArrowRight />
             </Link>
             <a
@@ -72,6 +73,7 @@ export default function Home() {
           </div>
           <div className="hero__meta">
             <span><Location /> Gurugram, India</span>
+            <a href="tel:+919992182382"><Phone /> +91-9992182382</a>
             <a href="https://www.linkedin.com/in/saurabhkaushick" target="_blank" rel="noreferrer">
               <LinkedIn /> LinkedIn <ArrowUpRight />
             </a>

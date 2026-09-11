@@ -40,9 +40,9 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    slug: "itrails",
+    slug: "itrials",
     index: "01",
-    name: "iTrails",
+    name: "iTrials",
     category: "Healthcare AI",
     summary:
       "A GenAI and RAG patient-eligibility platform for US healthcare, taken from discovery through launch with a focus on faster review.",
@@ -52,8 +52,8 @@ export const caseStudies: CaseStudy[] = [
     metric: "75% faster",
     metricLabel: "Patient review time",
     secondaryMetric: "180 sec to 45 sec",
-    liveUrl: "https://itrails.ai",
-    liveLabel: "Visit iTrails",
+    liveUrl: "https://www.itrials.ai/",
+    liveLabel: "Visit iTrials",
     snapshot: [
       { label: "Product", value: "B2B SaaS" },
       { label: "Role", value: "Product Manager" },

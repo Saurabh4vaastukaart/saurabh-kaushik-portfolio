@@ -1,9 +1,11 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, LinkedIn, Mail } from "@/components/icons";
+import { ArrowUpRight, LinkedIn, Mail, Phone } from "@/components/icons";
+import profilePhoto from "@/public/saurabh-profile.jpg";
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer" id="contact">
+    <footer className="site-footer">
       <div className="footer-shell">
         <div className="footer-main" data-reveal>
           <p className="section-label"><span />Let&apos;s build something useful</p>
@@ -13,8 +15,11 @@ export function SiteFooter() {
             strategy and execution all matter.
           </p>
           <div className="footer-actions">
-            <a className="button button--primary" href="mailto:saurabhkaushick@gmail.com">
+            <a className="button button--contact" href="mailto:saurabhkaushick@gmail.com">
               <Mail /> Email me
+            </a>
+            <a className="button button--secondary" href="tel:+919992182382">
+              <Phone /> +91-9992182382
             </a>
             <a
               className="button button--secondary"
@@ -28,7 +33,7 @@ export function SiteFooter() {
         </div>
         <div className="footer-bottom">
           <Link className="footer-brand" href="/">
-            <span>SK</span>
+            <span><Image src={profilePhoto} alt="" placeholder="blur" sizes="32px" /></span>
             Saurabh Kaushik
           </Link>
           <p>Product Manager focused on AI, SaaS and growth.</p>

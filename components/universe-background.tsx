@@ -67,6 +67,8 @@ export function UniverseBackground() {
         </g>
       </svg>
       <div className="universe__grid" />
+      <div className="universe__shooting-light universe__shooting-light--one" />
+      <div className="universe__shooting-light universe__shooting-light--two" />
       <div className="universe__noise" />
     </div>
   );

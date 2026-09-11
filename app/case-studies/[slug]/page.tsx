@@ -53,7 +53,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <nav className="breadcrumb" aria-label="Breadcrumb" data-reveal>
           <Link href="/">Home</Link>
           <span>/</span>
-          <Link href="/#work">Work</Link>
+          <Link href="/work">Work</Link>
           <span>/</span>
           <span aria-current="page">{study.name}</span>
         </nav>
@@ -71,7 +71,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               ) : (
                 <span className="case-private">Private product case study</span>
               )}
-              <Link className="button button--secondary" href="/#work">
+              <Link className="button button--secondary" href="/work">
                 All product work
               </Link>
             </div>
