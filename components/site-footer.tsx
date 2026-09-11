@@ -18,11 +18,11 @@ export function SiteFooter() {
             <a className="button button--contact" href="mailto:saurabhkaushick@gmail.com">
               <Mail /> Email me
             </a>
-            <a className="button button--secondary" href="tel:+919992182382">
+            <a className="button button--secondary button--phone" href="tel:+919992182382">
               <Phone /> +91-9992182382
             </a>
             <a
-              className="button button--secondary"
+              className="button button--secondary button--linkedin"
               href="https://www.linkedin.com/in/saurabhkaushick"
               target="_blank"
               rel="noreferrer"

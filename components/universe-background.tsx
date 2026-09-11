@@ -33,14 +33,33 @@ export function UniverseBackground() {
       { rootMargin: "0px 0px -10%", threshold: 0.08 },
     );
 
-    document.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => {
-      revealObserver.observe(element);
+    const observeRevealElements = (scope: ParentNode) => {
+      if (scope instanceof HTMLElement && scope.matches("[data-reveal]")) {
+        revealObserver.observe(scope);
+      }
+
+      scope.querySelectorAll<HTMLElement>("[data-reveal]").forEach((element) => {
+        revealObserver.observe(element);
+      });
+    };
+
+    observeRevealElements(document);
+
+    const routeObserver = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        mutation.addedNodes.forEach((node) => {
+          if (node instanceof HTMLElement) observeRevealElements(node);
+        });
+      });
     });
+
+    routeObserver.observe(document.body, { childList: true, subtree: true });
 
     window.addEventListener("pointermove", move, { passive: true });
     return () => {
       cancelAnimationFrame(frame);
       window.removeEventListener("pointermove", move);
+      routeObserver.disconnect();
       revealObserver.disconnect();
     };
   }, []);
@@ -50,6 +69,8 @@ export function UniverseBackground() {
       <div className="universe__glow universe__glow--one" />
       <div className="universe__glow universe__glow--two" />
       <div className="universe__stars" />
+      <div className="universe__deep-stars" />
+      <div className="universe__pole-star"><span /></div>
       <svg className="universe__orbits" viewBox="0 0 1600 1100" preserveAspectRatio="xMidYMid slice">
         <g className="orbit-group orbit-group--one">
           <ellipse cx="800" cy="520" rx="650" ry="250" />

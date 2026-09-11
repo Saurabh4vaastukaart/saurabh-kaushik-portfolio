@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { ArrowUpRight, LinkedIn, Location, Phone } from "@/components/icons";
 import profilePhoto from "@/public/saurabh-profile.jpg";
 
 export function ProfileCard() {
@@ -48,12 +49,18 @@ export function ProfileCard() {
         />
         <div className="profile-card__image-shade" />
       </div>
-      <div className="profile-card__caption">
-        <div>
+      <div className="profile-card__details">
+        <div className="profile-card__availability">
           <span className="status-dot" />
           <span>Open to the right product challenge</span>
         </div>
-        <strong>Gurugram, India</strong>
+        <div className="profile-card__contacts">
+          <span><Location /> Gurugram, India</span>
+          <a href="tel:+919992182382"><Phone /> +91-9992182382</a>
+          <a href="https://www.linkedin.com/in/saurabhkaushick" target="_blank" rel="noreferrer">
+            <LinkedIn /> LinkedIn <ArrowUpRight />
+          </a>
+        </div>
       </div>
       <div className="profile-card__chip profile-card__chip--top">
         <small>Experience</small>

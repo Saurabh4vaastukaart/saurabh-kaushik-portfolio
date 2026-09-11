@@ -2,11 +2,7 @@ import Link from "next/link";
 import { CaseCard } from "@/components/case-card";
 import {
   ArrowRight,
-  ArrowUpRight,
   Download,
-  LinkedIn,
-  Location,
-  Phone,
   Spark,
 } from "@/components/icons";
 import { ProfileCard } from "@/components/profile-card";
@@ -64,18 +60,11 @@ export default function Home() {
               Explore my work <ArrowRight />
             </Link>
             <a
-              className="button button--secondary"
+              className="button button--secondary button--resume"
               href="/Saurabh_Kaushik_Product_Manager_Resume.pdf"
               download
             >
               <Download /> Download resume
-            </a>
-          </div>
-          <div className="hero__meta">
-            <span><Location /> Gurugram, India</span>
-            <a href="tel:+919992182382"><Phone /> +91-9992182382</a>
-            <a href="https://www.linkedin.com/in/saurabhkaushick" target="_blank" rel="noreferrer">
-              <LinkedIn /> LinkedIn <ArrowUpRight />
             </a>
           </div>
         </div>

@@ -71,7 +71,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
               ) : (
                 <span className="case-private">Private product case study</span>
               )}
-              <Link className="button button--secondary" href="/work">
+              <Link className="button button--secondary button--violet" href="/work">
                 All product work
               </Link>
             </div>
