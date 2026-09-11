@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="How Saurabh Kaushik took iTrails, a GenAI and RAG patient-eligibility platform, from discovery to launch and reduced review time by 75%.">
+    <meta name="theme-color" content="#06101d">
+    <title>iTrails Case Study | Saurabh Kaushik</title>
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/assets/styles.css">
+    <script src="/assets/site.js" defer></script>
+  </head>
+  <body data-section="case-studies">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div id="site-header"></div>
+
+    <main id="main-content">
+      <section class="container case-hero" aria-labelledby="case-title">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a><span data-chevron aria-hidden="true"></span><a href="/case-studies/">Case Studies</a><span data-chevron aria-hidden="true"></span><span aria-current="page">iTrails</span>
+        </nav>
+        <div class="case-hero-grid">
+          <div>
+            <p class="eyebrow">Case study 01 · Healthcare AI</p>
+            <h1 id="case-title">iTrails</h1>
+            <p class="case-summary">A GenAI and RAG platform that helps hospitals identify patients who may be eligible for clinical trials, with evidence kept visible for human review.</p>
+          </div>
+          <dl class="case-snapshot">
+            <div class="snapshot-row"><dt>Product</dt><dd>B2B SaaS + on-premise software</dd></div>
+            <div class="snapshot-row"><dt>Market</dt><dd>US Healthcare</dd></div>
+            <div class="snapshot-row"><dt>Role</dt><dd>Product Manager</dd></div>
+            <div class="snapshot-row"><dt>Scope</dt><dd>Discovery to launch</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="case-impact" aria-labelledby="impact-title">
+        <div class="container case-impact-grid">
+          <div class="case-impact-number">75%</div>
+          <div class="case-impact-copy">
+            <p class="section-kicker">Primary outcome</p>
+            <h2 id="impact-title">Patient review time fell from 180 seconds to 45 seconds.</h2>
+            <p>The workflow reduced repetitive manual reading while keeping the final eligibility decision with trained hospital staff.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container case-body">
+          <nav class="case-toc" aria-label="Case study sections">
+            <strong>In this story</strong>
+            <a href="#problem">The problem</a>
+            <a href="#role">My role</a>
+            <a href="#solution">The product</a>
+            <a href="#decisions">Key decisions</a>
+            <a href="#measurement">Measurement</a>
+            <a href="#learning">What I learned</a>
+          </nav>
+
+          <div>
+            <section class="story-section" id="problem">
+              <p class="section-kicker">01 · The problem</p>
+              <h2>Eligibility review was slow and cognitively heavy.</h2>
+              <p>Clinical trials use detailed inclusion and exclusion criteria. Hospital teams had to read a patient’s history, compare each criterion and decide whether the patient should be considered. A typical review took around 180 seconds per patient.</p>
+              <p>The opportunity was not to replace clinical judgement. It was to reduce repetitive work, make relevant evidence easier to find and help staff reach a review-ready answer faster.</p>
+              <div class="quote-panel"><p>The product principle was simple: AI could support the decision, but a human reviewer must remain accountable for it.</p></div>
+            </section>
+
+            <section class="story-section" id="role">
+              <p class="section-kicker">02 · My role</p>
+              <h2>End-to-end ownership across product and delivery.</h2>
+              <p>I owned the product area from understanding hospital and pharma needs through requirements, workflow design, backlog prioritisation, engineering delivery, UAT and impact measurement.</p>
+              <p>I worked with engineering on the RAG-based workflow, with hospital stakeholders on deployment and acceptance criteria, and with business leaders on product scope and launch priorities.</p>
+            </section>
+
+            <section class="story-section" id="solution">
+              <p class="section-kicker">03 · The product</p>
+              <h2>One workflow from patient history to reviewable evidence.</h2>
+              <p>iTrails connects pharma trial requirements with hospital patient information. For each patient, the system works with one consolidated patient-history document and evaluates it against a trial’s inclusion and exclusion criteria.</p>
+              <div class="flow" aria-label="iTrails workflow">
+                <div class="flow-step"><strong>Patient history</strong><span>A single consolidated record enters the workflow.</span></div>
+                <div class="flow-step"><strong>Relevant retrieval</strong><span>RAG finds the sections related to each criterion.</span></div>
+                <div class="flow-step"><strong>Criteria evaluation</strong><span>The LLM checks inclusion and exclusion conditions.</span></div>
+                <div class="flow-step"><strong>Human review</strong><span>Staff see the candidate result with supporting context.</span></div>
+              </div>
+              <p>The output was designed as a review aid: candidate status, an explanation and the relevant evidence. Missing or contradictory information was surfaced instead of being silently treated as a confident answer.</p>
+            </section>
+
+            <section class="story-section" id="decisions">
+              <p class="section-kicker">04 · Key decisions</p>
+              <h2>Trust and workflow fit mattered as much as model capability.</h2>
+              <div class="decision-stack">
+                <article class="decision"><span class="decision-number">01</span><div><h3>Keep a human in the loop</h3><p>Because generative AI is non-deterministic and the workflow affects clinical-trial screening, the product supported rather than replaced the trained reviewer.</p></div></article>
+                <article class="decision"><span class="decision-number">02</span><div><h3>Show the evidence</h3><p>Eligibility status alone was not enough. Reviewers needed the relevant patient context and an explanation so they could verify the result.</p></div></article>
+                <article class="decision"><span class="decision-number">03</span><div><h3>Design explicit uncertainty states</h3><p>Missing and contradictory information were treated as product states requiring review, not as edge cases to hide.</p></div></article>
+                <article class="decision"><span class="decision-number">04</span><div><h3>Support hospital deployment constraints</h3><p>On-premise deployment, role-based permissions and careful handling of patient data were built into the workflow. HIPAA expectations shaped privacy controls, while HL7 informed healthcare data exchange.</p></div></article>
+              </div>
+            </section>
+
+            <section class="story-section" id="measurement">
+              <p class="section-kicker">05 · Measurement</p>
+              <h2>Measure the task, not the model in isolation.</h2>
+              <p>The baseline was the time hospital staff needed to review a patient manually: about 180 seconds. During UAT, we measured the same end-to-end task with iTrails, including reading the generated evidence and confirming the result.</p>
+              <p>The completed review took about 45 seconds, a 75% reduction. This made the outcome easy to connect to the real workflow rather than relying only on technical model metrics.</p>
+            </section>
+
+            <section class="story-section" id="learning">
+              <p class="section-kicker">06 · What I learned</p>
+              <h2>In high-stakes products, explainability is part of the experience.</h2>
+              <p>A technically correct answer is not useful if the person responsible cannot understand or verify it. The product became stronger when evidence, uncertainty and human review were treated as core workflow requirements rather than compliance checks added later.</p>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-border" aria-labelledby="next-case-title">
+        <div class="container cta-band">
+          <div><p class="section-kicker">Next case study</p><h2 id="next-case-title">Growth Ops</h2><p>How an AI/LLM acquisition and attribution product improved conversion and return on ad spend.</p></div>
+          <a class="button button-primary" href="/case-studies/growth-ops/">Read next story <svg class="icon-arrow" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+  </body>
+</html>
