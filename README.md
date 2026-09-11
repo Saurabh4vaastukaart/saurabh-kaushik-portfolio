@@ -1,33 +1,28 @@
-# Saurabh Kaushik — Product Portfolio
+# Saurabh Kaushik Product Portfolio
 
-A fast, responsive portfolio for Saurabh Kaushik, focused on Senior Product Manager and AI Product Manager opportunities.
+A custom Next.js portfolio focused on Saurabh's product-management work across AI, B2B SaaS, healthcare, EdTech and growth.
 
-## Pages
+## Built with
 
-- Home
-- Experience
-- Case studies
-  - iTrails
-  - Growth Ops
-  - Zetaleap
-  - Akashvaani
-- About
-- Contact
+- Next.js App Router
+- TypeScript
+- Custom CSS motion and interaction system
+- `next/image` and `next/font`
 
-## Local preview
-
-From the project folder, run:
+## Local development
 
 ```bash
-python3 -m http.server 4173
+npm install
+npm run dev
 ```
 
-Then open `http://localhost:4173`.
+Open `http://localhost:3000`.
 
-## Deployment
+## Production checks
 
-The project is a dependency-free static website and includes `vercel.json`. Import the repository in Vercel with the framework preset set to **Other**. No build command or output directory is required.
+```bash
+npm run typecheck
+npm run build
+```
 
-## Contact form
-
-The form prepares an email using the visitor's default email application. It does not store visitor data or require a backend service.
+The `main` branch is connected to Vercel and deploys automatically.
