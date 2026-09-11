@@ -34,9 +34,11 @@ export function SiteHeader() {
     if (!header) return;
 
     let frame = 0;
+    const getScrollProgress = () => Math.min(Math.max(window.scrollY / 180, 0), 1);
+    let targetProgress = getScrollProgress();
+    let currentProgress = targetProgress;
 
-    const updateHeader = () => {
-      const progress = Math.min(Math.max(window.scrollY / 180, 0), 1);
+    const renderHeader = (progress: number) => {
       const compactLayout = window.innerWidth <= 1160;
       const mobileLayout = window.innerWidth <= 880;
       const baseGutter = mobileLayout ? 24 : compactLayout ? 44 : 72;
@@ -45,6 +47,7 @@ export function SiteHeader() {
       const expandedMaxWidth = compactLayout ? 1180 : 1560;
       const baseNavWidth = compactLayout ? 430 : 470;
       const expandedNavWidth = compactLayout ? 488 : 640;
+      const baseTopGap = mobileLayout ? 12 : 16;
 
       header.style.setProperty(
         "--header-shell-gutter",
@@ -62,15 +65,32 @@ export function SiteHeader() {
       header.style.setProperty("--header-border-alpha", (0.24 * progress).toFixed(3));
       header.style.setProperty("--header-child-alpha", (0.76 - 0.7 * progress).toFixed(3));
       header.style.setProperty("--header-child-border-alpha", (0.14 - 0.08 * progress).toFixed(3));
+      header.style.setProperty("--header-top-gap", `${baseTopGap * (1 - progress)}px`);
+      header.style.setProperty("--header-top-radius", `${22 * (1 - progress)}px`);
       header.dataset.scrolled = progress > 0.06 ? "true" : "false";
     };
 
-    const scheduleUpdate = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(updateHeader);
+    const animateHeader = () => {
+      const distance = targetProgress - currentProgress;
+
+      if (Math.abs(distance) < 0.001) {
+        currentProgress = targetProgress;
+        renderHeader(currentProgress);
+        frame = 0;
+        return;
+      }
+
+      currentProgress += distance * 0.14;
+      renderHeader(currentProgress);
+      frame = requestAnimationFrame(animateHeader);
     };
 
-    updateHeader();
+    const scheduleUpdate = () => {
+      targetProgress = getScrollProgress();
+      if (!frame) frame = requestAnimationFrame(animateHeader);
+    };
+
+    renderHeader(currentProgress);
     window.addEventListener("scroll", scheduleUpdate, { passive: true });
     window.addEventListener("resize", scheduleUpdate);
 

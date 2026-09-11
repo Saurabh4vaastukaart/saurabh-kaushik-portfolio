@@ -2699,11 +2699,13 @@ h3 {
   --header-shell-gutter: 72px;
   --header-shell-max: 1240px;
   --header-nav-width: 470px;
+  --header-top-gap: 16px;
+  --header-top-radius: 22px;
   --header-surface-alpha: 0;
   --header-border-alpha: 0;
   --header-child-alpha: 0.76;
   --header-child-border-alpha: 0.14;
-  padding: 16px 0;
+  padding: var(--header-top-gap) 0 0;
 }
 
 .header-shell {
@@ -2712,11 +2714,11 @@ h3 {
   min-height: 62px;
   padding: 5px;
   border: 1px solid rgba(191, 203, 255, var(--header-border-alpha));
-  border-radius: 22px;
+  border-radius: var(--header-top-radius) var(--header-top-radius) 22px 22px;
   background: rgba(5, 8, 20, var(--header-surface-alpha));
   box-shadow: 0 18px 60px rgba(0, 0, 0, var(--header-surface-alpha));
   backdrop-filter: blur(28px) saturate(155%);
-  transition: width 120ms linear, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  transition: border-color 260ms ease, background 260ms ease, box-shadow 260ms ease;
 }
 
 .brand,
@@ -2782,7 +2784,7 @@ h3 {
   gap: 3px;
   padding: 5px;
   border-radius: 999px;
-  transition: width 120ms linear, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+  transition: border-color 260ms ease, background 260ms ease, box-shadow 260ms ease;
 }
 
 .desktop-nav a {
@@ -3327,31 +3329,57 @@ h3 {
 
 .page-principle {
   display: grid;
-  grid-template-columns: 180px minmax(0, 780px);
-  gap: 44px;
+  grid-template-columns: 1fr;
+  gap: 24px;
   margin-top: 40px;
   margin-bottom: 120px;
-  padding-top: 35px;
-  padding-bottom: 35px;
+  padding-top: 44px;
+  padding-bottom: 48px;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 
 .page-principle > span {
+  position: relative;
+  display: inline-flex;
+  width: max-content;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px 8px 9px;
   color: var(--cyan);
+  border: 1px solid rgba(101, 231, 255, 0.16);
+  border-radius: 999px;
+  background: rgba(101, 231, 255, 0.045);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+.page-principle > span::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(101, 231, 255, 0.34);
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--cyan), var(--violet), var(--pink));
+  box-shadow: 0 0 15px rgba(101, 231, 255, 0.28);
+  transform: rotate(45deg) scale(0.72);
+  animation: principle-mark 5s ease-in-out infinite;
+}
+
+@keyframes principle-mark {
+  50% { transform: rotate(225deg) scale(0.92); }
+}
+
 .page-principle p {
+  max-width: 1050px;
   margin: 0;
   font-family: var(--heading);
-  font-size: clamp(24px, 3vw, 38px);
+  font-size: clamp(30px, 3vw, 42px);
   font-weight: 650;
   letter-spacing: -0.035em;
-  line-height: 1.35;
+  line-height: 1.18;
 }
 
 .page-stats {
@@ -4111,7 +4139,8 @@ h3 {
   .operating-step__head svg,
   .timeline__rail::after,
   .page-intro__signal::before,
-  .contact-hero__signal::before {
+  .contact-hero__signal::before,
+  .page-principle > span::before {
     animation: none !important;
   }
 }

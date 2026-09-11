@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 const experienceStats = [
-  { value: "6 years", label: "Product management" },
-  { value: "15+", label: "Engineers and designers led" },
   { value: "$1.2M+", label: "Revenue growth contributed" },
-  { value: "700K+", label: "Users served" },
+  { value: "700K+", label: "Users served across products" },
+  { value: "15+", label: "Engineers and designers led" },
+  { value: "6 years", label: "End-to-end product ownership" },
 ];
 
 export default function ExperiencePage() {
@@ -35,8 +35,8 @@ export default function ExperiencePage() {
         </aside>
       </section>
 
-      <section className="page-stats" aria-label="Career summary">
-        <div className="section-shell page-stats__grid">
+      <section className="impact-rail" aria-label="Career summary">
+        <div className="section-shell impact-rail__grid">
           {experienceStats.map((stat, index) => (
             <article key={stat.label} data-reveal style={{ transitionDelay: `${index * 60}ms` }}>
               <strong>{stat.value}</strong>
