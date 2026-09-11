@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Close, LinkedIn, Menu, Phone } from "@/components/icons";
 import profilePhoto from "@/public/saurabh-profile.jpg";
 
@@ -16,6 +16,7 @@ const navItems = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
 
   const isActive = (href: string) => {
@@ -28,8 +29,60 @@ export function SiteHeader() {
     return () => document.body.classList.remove("menu-open");
   }, [open]);
 
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    let frame = 0;
+
+    const updateHeader = () => {
+      const progress = Math.min(Math.max(window.scrollY / 180, 0), 1);
+      const compactLayout = window.innerWidth <= 1160;
+      const mobileLayout = window.innerWidth <= 880;
+      const baseGutter = mobileLayout ? 24 : compactLayout ? 44 : 72;
+      const expandedGutter = mobileLayout ? 14 : 18;
+      const baseMaxWidth = compactLayout ? 1080 : 1240;
+      const expandedMaxWidth = compactLayout ? 1180 : 1560;
+      const baseNavWidth = compactLayout ? 430 : 470;
+      const expandedNavWidth = compactLayout ? 488 : 640;
+
+      header.style.setProperty(
+        "--header-shell-gutter",
+        `${baseGutter + (expandedGutter - baseGutter) * progress}px`,
+      );
+      header.style.setProperty(
+        "--header-shell-max",
+        `${baseMaxWidth + (expandedMaxWidth - baseMaxWidth) * progress}px`,
+      );
+      header.style.setProperty(
+        "--header-nav-width",
+        `${baseNavWidth + (expandedNavWidth - baseNavWidth) * progress}px`,
+      );
+      header.style.setProperty("--header-surface-alpha", (0.48 * progress).toFixed(3));
+      header.style.setProperty("--header-border-alpha", (0.24 * progress).toFixed(3));
+      header.style.setProperty("--header-child-alpha", (0.76 - 0.7 * progress).toFixed(3));
+      header.style.setProperty("--header-child-border-alpha", (0.14 - 0.08 * progress).toFixed(3));
+      header.dataset.scrolled = progress > 0.06 ? "true" : "false";
+    };
+
+    const scheduleUpdate = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(updateHeader);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", scheduleUpdate, { passive: true });
+    window.addEventListener("resize", scheduleUpdate);
+
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", scheduleUpdate);
+      window.removeEventListener("resize", scheduleUpdate);
+    };
+  }, [pathname]);
+
   return (
-    <header className="site-header">
+    <header className="site-header" ref={headerRef}>
       <div className="header-shell">
         <Link className="brand" href="/" aria-label="Saurabh Kaushik, home" onClick={() => setOpen(false)}>
           <span className="brand-avatar">

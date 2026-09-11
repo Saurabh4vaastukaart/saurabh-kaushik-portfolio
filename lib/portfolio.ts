@@ -457,7 +457,7 @@ export const experience = [
 export const skillGroups = [
   {
     label: "Product craft",
-    skills: ["Strategy", "Discovery", "Roadmaps", "PRDs", "GTM", "PLG", "RICE", "OKRs"],
+    skills: ["Strategy", "Discovery", "Roadmaps", "PRDs", "Prototype", "GTM", "PLG", "RICE", "OKRs"],
   },
   {
     label: "Data + growth",

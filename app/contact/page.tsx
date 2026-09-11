@@ -45,8 +45,31 @@ export default function ContactPage() {
           </div>
         </div>
         <aside className="contact-hero__signal" data-reveal>
-          <span>Best way to reach me</span>
-          <a href="mailto:saurabhkaushick@gmail.com">saurabhkaushick@gmail.com <ArrowUpRight /></a>
+          <div className="contact-signal__heading">
+            <span>Best ways to reach me</span>
+            <small>Open for opportunities</small>
+          </div>
+          <div className="contact-signal__methods">
+            {contactMethods.map((method) => {
+              const Icon = method.icon;
+              return (
+                <a
+                  key={method.label}
+                  className="contact-signal__method"
+                  href={method.href}
+                  target={method.external ? "_blank" : undefined}
+                  rel={method.external ? "noreferrer" : undefined}
+                >
+                  <span className="contact-signal__icon"><Icon /></span>
+                  <span className="contact-signal__copy">
+                    <small>{method.label}</small>
+                    <strong>{method.value}</strong>
+                  </span>
+                  <ArrowUpRight />
+                </a>
+              );
+            })}
+          </div>
           <p>I typically respond to relevant product conversations directly.</p>
         </aside>
       </section>

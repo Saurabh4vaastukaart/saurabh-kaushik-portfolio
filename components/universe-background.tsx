@@ -90,6 +90,8 @@ export function UniverseBackground() {
       <div className="universe__grid" />
       <div className="universe__shooting-light universe__shooting-light--one" />
       <div className="universe__shooting-light universe__shooting-light--two" />
+      <div className="universe__shooting-light universe__shooting-light--three" />
+      <div className="universe__shooting-light universe__shooting-light--four" />
       <div className="universe__noise" />
     </div>
   );
